@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="33px" viewBox="0 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <g id="final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="profile" transform="translate(-200.000000, -186.000000)">
+            <g id="Group-2" transform="translate(200.000000, 186.000000)">
+                <circle id="Oval" fill="#E53B32" cx="16.5" cy="16.5" r="16.5"></circle>
+                <g id="352547_edit_mode_icon-(1)-copy" transform="translate(6.000000, 6.000000)">
+                    <path d="M2.5,14.375 L2.5,17.5 L5.625,17.5 L14.8458333,8.27916667 L11.7208333,5.15416667 L2.5,14.375 Z M17.2541667,5.87083333 C17.5791667,5.54583333 17.5791667,5.01666667 17.2541667,4.69166667 L15.3083333,2.74583333 C14.9833333,2.42083333 14.4541667,2.42083333 14.1291667,2.74583333 L12.6041667,4.27083333 L15.7291667,7.39583333 L17.2541667,5.87083333 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    <polygon id="Path" points="0 0 20 0 20 20 0 20"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

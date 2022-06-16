@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>172559_wheel_steering_icon</title>
+    <g id="final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home_screen" transform="translate(-296.000000, -1770.000000)">
+            <g id="172559_wheel_steering_icon" transform="translate(296.000000, 1770.000000)">
+                <rect id="Rectangle" x="0" y="0" width="28" height="28"></rect>
+                <path d="M14,24.64 C8.13344,24.64 3.36,19.86712 3.36,14 C3.36,8.13288 8.13344,3.36 14,3.36 C19.86656,3.36 24.63944,8.13288 24.63944,14 C24.63944,19.86712 19.86656,24.64 14,24.64 Z" id="Shape" stroke="#000000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M24.32864,12.32 C19.84864,12.32 17.69768,9.52 14,9.52 C10.29672,9.52 8.43136,12.32 3.67136,12.32 M16.24,23.52 C16.24,23.52 16.24,20.0452 16.24,19.04 C16.24,17.53696 17.5056,16.24 19.04,16.24 C19.73496,16.24 24.11136,16.24 24.11136,16.24 M3.67136,16.24 C3.67136,16.24 8.34232,16.24 8.96,16.24 C10.5756,16.24 11.76,17.4888 11.76,19.04 C11.76,20.07992 11.76,23.52 11.76,23.52" id="Shape" stroke="#000000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                <circle id="Oval" stroke="#000000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" cx="14" cy="14" r="2.24"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
