@@ -9,29 +9,37 @@ class CommonActionButtonWidget extends StatelessWidget {
   final String? text;
   final VoidCallback? onPressed;
   bool? isProgressShown;
+  double? radius=0;
+  double? height;
+  Color? buttonColor;
+  TextStyle? buttonFontStyle;
 
   CommonActionButtonWidget(
       {Key? key,
       required this.text,
       required this.onPressed,
+        this.radius,
+        this.height,
+        this.buttonFontStyle,
+        this.buttonColor,
       this.isProgressShown})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 54,
+      height: height??58,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          gradient: const LinearGradient(
-            begin: Alignment(-0.95, 0.0),
-            end: Alignment(1.0, 0.0),
+          borderRadius: BorderRadius.circular(radius??8),
+          gradient:  LinearGradient(
+            begin: const Alignment(-0.95, 0.0),
+            end: const Alignment(1.0, 0.0),
             colors: [
-              AppColors.gradientColorFirst,
-              AppColors.gradientColorSecond
+              buttonColor?? AppColors.gradientColorFirst,
+              buttonColor?? AppColors.gradientColorSecond
             ],
-            stops: [0.0, 1.0],
+            stops: const [0.0, 1.0],
           ),
           boxShadow: const [
             BoxShadow(
@@ -48,7 +56,7 @@ class CommonActionButtonWidget extends StatelessWidget {
           child: Center(
             child: isProgressShown == true
                 ? const SpinKitCircle(color: AppColors.colorWhite, size: 50.0)
-                : Text(text ?? "", style: AppConstant.buttonFontStyle),
+                : Text(text ?? "", style: buttonFontStyle??AppConstant.buttonFontStyle),
           )),
     );
   }

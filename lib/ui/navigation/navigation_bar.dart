@@ -60,7 +60,7 @@ class _CarBoyNavigationBarState extends State<CarBoyNavigationBar> {
         boxShadow: const [
           BoxShadow(
               blurRadius: 13,
-              color: Color.fromRGBO(0, 0, 0, 0.22),
+              color: Color.fromRGBO(0, 0, 0, 0.3),
               spreadRadius: 0,
               offset: Offset(0, 5))
         ],
@@ -68,22 +68,28 @@ class _CarBoyNavigationBarState extends State<CarBoyNavigationBar> {
         unselectedItemColor: AppColors.colorBlack,
         dotIndicatorColor: AppColors.primaryColor,
         currentIndex: _SelectedTab.values.indexOf(_selectedTab),
+
         onTap: _handleIndexChanged,
         // dotIndicatorColor: Colors.black,
         items: [
           /// Home
-          DotNavigationBarItem(icon: SvgPicture.asset(AppImages.homeTabIcon)),
+          DotNavigationBarItem(
+              icon: SvgPicture.asset(AppImages.homeTabIcon,height: 22,width: 24)),
 
           /// Sell
-          DotNavigationBarItem(icon: SvgPicture.asset(AppImages.sellTabIcon)),
+          DotNavigationBarItem(
+              icon: SvgPicture.asset(AppImages.sellTabIcon,height: 22,width: 26)),
 
           /// Insurance
           DotNavigationBarItem(
-              icon: SvgPicture.asset(AppImages.insuranceTabIcon)),
+              icon: SvgPicture.asset(AppImages.insuranceTabIcon,height: 22,width: 26)),
 
           /// Setting
           DotNavigationBarItem(
-              icon: SvgPicture.asset(AppImages.settingTabIcon)),
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: SvgPicture.asset(AppImages.settingTabIcon,height: 26,width: 26),
+              )),
         ],
       ),
     );

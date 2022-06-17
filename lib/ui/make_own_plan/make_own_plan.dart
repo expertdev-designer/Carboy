@@ -1,3 +1,4 @@
+import 'package:carboy/ui/common_widget/CommonActionButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,6 +20,8 @@ class MakeYourOwnPlan extends StatefulWidget {
 class _TabLayoutExampleState extends State<MakeYourOwnPlan>
     with TickerProviderStateMixin {
   late TabController _tabController;
+
+  int selectedIndex = -1;
 
   @override
   void initState() {
@@ -51,37 +54,7 @@ class _TabLayoutExampleState extends State<MakeYourOwnPlan>
           elevation: 0,
           title: Text(AppStrings.makeYourOwnPlan,
               style: AppConstant.appBarFontStyleBold),
-          bottom: TabBar(
-            labelColor: Colors.black,
-            unselectedLabelColor: Colors.black,
-            labelStyle: AppConstant.tabSelectedFontStyle,
-            unselectedLabelStyle: AppConstant.tabUnselectedFontStyle,
-            overlayColor:
-                MaterialStateColor.resolveWith((Set<MaterialState> states) {
-              if (states.contains(MaterialState.pressed)) {
-                return AppColors.primaryColor.withOpacity(0.5);
-              }
-              if (states.contains(MaterialState.focused)) {
-                return Colors.orange;
-              } else if (states.contains(MaterialState.hovered)) {
-                return Colors.pinkAccent;
-              }
-
-              return Colors.transparent;
-            }),
-            indicatorWeight: 4,
-            indicatorColor: AppColors.primaryColor,
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicatorPadding: const EdgeInsets.all(5),
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            isScrollable: true,
-            physics: const BouncingScrollPhysics(),
-            onTap: (int index) {
-              debugPrint('Tab $index is tapped');
-            },
-            enableFeedback: true,
-            tabs: _tabs,
-          ),
+          bottom: tabBar(),
         ),
         body: TabBarView(
           physics: const NeverScrollableScrollPhysics(),
@@ -98,10 +71,43 @@ class _TabLayoutExampleState extends State<MakeYourOwnPlan>
     );
   }
 
+  tabBar() {
+    return TabBar(
+        labelColor: Colors.black,
+        unselectedLabelColor: Colors.black,
+        labelStyle: AppConstant.tabSelectedFontStyle,
+        unselectedLabelStyle: AppConstant.tabUnselectedFontStyle,
+        overlayColor:
+            MaterialStateColor.resolveWith((Set<MaterialState> states) {
+          if (states.contains(MaterialState.pressed)) {
+            return AppColors.primaryColor.withOpacity(0.5);
+          }
+          if (states.contains(MaterialState.focused)) {
+            return Colors.orange;
+          } else if (states.contains(MaterialState.hovered)) {
+            return Colors.pinkAccent;
+          }
+          return Colors.transparent;
+        }),
+        indicatorWeight: 2,
+        indicatorColor: AppColors.primaryColor,
+        indicatorSize: TabBarIndicatorSize.tab,
+        indicatorPadding:
+            const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        isScrollable: false,
+        physics: const BouncingScrollPhysics(),
+        onTap: (int index) {
+          debugPrint('Tab $index is tapped');
+        },
+        enableFeedback: true,
+        tabs: _tabs);
+  }
+
   tabView() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [selectPackageDropDown(), planListView()],
+      children: [selectPackageDropDown(), planListView(), _continueButton()],
     );
   }
 
@@ -160,10 +166,7 @@ class _TabLayoutExampleState extends State<MakeYourOwnPlan>
                       value: valueItem,
                       child: Row(
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const SizedBox(width: 15),
-                          Text(valueItem),
-                        ],
+                        children: [const SizedBox(width: 15), Text(valueItem)],
                       ),
                     );
                   }).toList(),
@@ -184,56 +187,78 @@ class _TabLayoutExampleState extends State<MakeYourOwnPlan>
           scrollDirection: Axis.vertical,
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            return Container(
-                decoration: AppConstant.boxDecoration,
-                height: 90,
-                margin: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
-                padding: const EdgeInsets.only(left: 15),
-                width: MediaQuery.of(context).size.width,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Icon(Icons.radio_button_off),
-                    Text("Monthly Car Cleaning -  Exterior",
-                        style: AppConstant.labelFontStyle.copyWith(
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.colorBlack,
-                            fontSize: 14)),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 4),
-                            decoration: AppConstant.blackBoxDecoration,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text('₹ 50',
-                                    style: AppConstant.labelFontStyle.copyWith(
-                                        fontWeight: FontWeight.w700,
-                                        color: AppColors.colorWhite,
-                                        fontSize: 14)),
-                                Text('Per Month',
-                                    style: AppConstant.labelFontStyle.copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColors.colorWhite,
-                                        fontSize: 10))
-                              ],
-                            )),
-                        const SizedBox(height: 10),
-                        Text('₹ 50',
+            return InkWell(
+              onTap: () {
+                selectedIndex = index;
+                setState(() {});
+              },
+              child: Container(
+                  decoration: AppConstant.boxDecoration,
+                  height: 90,
+                  margin:
+                      const EdgeInsets.only(right: 20, left: 20, bottom: 20),
+                  padding: const EdgeInsets.only(left: 15),
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(index == selectedIndex
+                          ? AppImages.selectedRadioButton
+                          : AppImages.unselectedRadioButton),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Text("Monthly Car Cleaning -  Exterior",
                             style: AppConstant.labelFontStyle.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.colorBlack,
-                                fontSize: 14,
-                                decoration: TextDecoration.lineThrough)),
-                      ],
-                    ),
-                  ],
-                ));
+                                fontSize: 14)),
+                      ),
+                      const SizedBox(width: 8),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 4),
+                              decoration: AppConstant.blackBoxDecoration,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text('₹ 50',
+                                      style: AppConstant.labelFontStyle
+                                          .copyWith(
+                                              fontWeight: FontWeight.w700,
+                                              color: AppColors.colorWhite,
+                                              fontSize: 14)),
+                                  Text('Per Month',
+                                      style: AppConstant.labelFontStyle
+                                          .copyWith(
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.colorWhite,
+                                              fontSize: 10))
+                                ],
+                              )),
+                          const SizedBox(height: 10),
+                          Text('₹ 50',
+                              style: AppConstant.labelFontStyle.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.colorBlack,
+                                  fontSize: 14,
+                                  decoration: TextDecoration.lineThrough)),
+                        ],
+                      ),
+                    ],
+                  )),
+            );
           }),
     );
+  }
+
+  _continueButton() {
+    return CommonActionButtonWidget(
+        text: AppStrings.continueText.toUpperCase(),
+        isProgressShown: false,
+        onPressed: () {},
+        radius: 0);
   }
 }

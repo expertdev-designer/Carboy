@@ -21,8 +21,22 @@ class AppStrings {
   static const individualPlan = "Individual Plan";
   static const ourTailor = "Our tailor - made plans for you";
   static const carWash = "Car Wash";
-  static const sellText = "WANT IT SOLD? DON’T WANT THE  HASSLE?   WE’LL SELL YOUR CAR FOR YOU!";
-  static const insuranceText = "BE INSURED  & SECURED   GET YOUR INSURANCE TODAY!";
-  static const enquiry="ENQUIRY";
-  // static const ourTailor = "Our tailor - made plans for you";
+  static const sellText =
+      "WANT IT SOLD? DON’T WANT THE  HASSLE?   WE’LL SELL YOUR CAR FOR YOU!";
+  static const insuranceText =
+      "BE INSURED  & SECURED   GET YOUR INSURANCE TODAY!";
+  static const enquiry = "ENQUIRY";
+  static const profile = "Profile";
+  static const myPackages = "My Packages";
+  static const transactionHistory = "Transaction History";
+  static const tc = "Terms and Conditions";
+  static const pp = "Privacy Policy";
+  static const logout = "Logout";
+  static const login = "Login";
+  static const expiryDate = "Expiry Date";
+  static const currentPlan = "Current Plan";
+  static const addOns = "Add Ons";
+  static const renewPlan = "Renew Plan";
+  static const changePackage = "Change Package";
+// static const ourTailor = "Our tailor - made plans for you";
 }

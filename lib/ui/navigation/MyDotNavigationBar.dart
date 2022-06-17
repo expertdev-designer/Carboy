@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'NavBarBody.dart';
 
-
 class MyDotNavigationBar extends StatelessWidget {
   MyDotNavigationBar(
       {Key? key,
@@ -14,7 +13,8 @@ class MyDotNavigationBar extends StatelessWidget {
       this.selectedItemColor,
       this.unselectedItemColor,
       this.margin = const EdgeInsets.all(8),
-      this.itemPadding = const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+      this.itemPadding =
+          const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
       this.duration = const Duration(milliseconds: 500),
       this.curve = Curves.easeOutQuint,
       this.dotIndicatorColor,
@@ -28,7 +28,7 @@ class MyDotNavigationBar extends StatelessWidget {
           spreadRadius: 0,
           blurRadius: 0,
           offset: Offset(0, 0), // changes position of shadow
-        ),
+        )
       ],
       this.enableFloatingNavBar = true,
       this.enablePaddingAnimation = true})
@@ -88,6 +88,7 @@ class MyDotNavigationBar extends StatelessWidget {
     return enableFloatingNavBar
         ? BottomAppBar(
             color: Colors.transparent,
+
             elevation: 0,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -123,7 +124,7 @@ class MyDotNavigationBar extends StatelessWidget {
             ),
           )
         : Container(
-            padding: EdgeInsets.symmetric(vertical: 12),
+            padding:const EdgeInsets.symmetric(vertical: 12),
             color: backgroundColor,
             child: Padding(
               padding: margin,

@@ -41,44 +41,7 @@ class _TabViewHomeState extends State<TabViewHome>
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        appBar: TabBar(
-          labelColor: Colors.black,
-          unselectedLabelColor: Colors.black,
-          labelStyle: AppConstant.tabSelectedFontStyle,
-          unselectedLabelStyle: AppConstant.tabUnselectedFontStyle,
-          overlayColor:
-              MaterialStateColor.resolveWith((Set<MaterialState> states) {
-            if (states.contains(MaterialState.pressed)) {
-              return AppColors.primaryColor.withOpacity(0.5);
-            }
-            if (states.contains(MaterialState.focused)) {
-              return Colors.orange;
-            } else if (states.contains(MaterialState.hovered)) {
-              return Colors.pinkAccent;
-            }
-
-            return Colors.transparent;
-          }),
-          indicatorWeight: 4,
-          indicatorColor: AppColors.primaryColor,
-          indicatorSize: TabBarIndicatorSize.tab,
-          indicatorPadding: const EdgeInsets.all(5),
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          // indicator: BoxDecoration(
-          //   border: Border.all(color: Colors.red),
-          //   borderRadius: BorderRadius.circular(10),
-          //   color: Colors.pinkAccent,
-          // ),
-          isScrollable: true,
-          physics: const BouncingScrollPhysics(),
-          onTap: (int index) {
-            debugPrint('Tab $index is tapped');
-          },
-          enableFeedback: true,
-          // Uncomment the line below and remove DefaultTabController if you want to use a custom TabController
-          // controller: _tabController,
-          tabs: _tabs,
-        ),
+        appBar: _tabBar(),
         body: TabBarView(
           physics: const NeverScrollableScrollPhysics(),
           // Uncomment the line below and remove DefaultTabController if you want to use a custom TabController
@@ -96,6 +59,7 @@ class _TabViewHomeState extends State<TabViewHome>
 
   tabView() {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -223,14 +187,16 @@ class _TabViewHomeState extends State<TabViewHome>
                         fontSize: 18),
                   ),
                   InkWell(
-                    onTap: ()
-                    {
-                      Navigator.push(context, CupertinoPageRoute(builder: (context)=>const MakeYourOwnPlan()));
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => const MakeYourOwnPlan()));
                     },
                     child: Container(
                       margin: const EdgeInsets.only(top: 10),
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 6),
                       decoration: AppConstant.boxDecoration.copyWith(
                           color: AppColors.primaryColor,
                           borderRadius: BorderRadius.circular(4),
@@ -274,7 +240,7 @@ class _TabViewHomeState extends State<TabViewHome>
   individualPlanListView() {
     return SizedBox(
       height: 90,
-      width: double.maxFinite,
+      width: MediaQuery.of(context).size.width,
       child: ListView.builder(
           itemCount: 6,
           shrinkWrap: true,
@@ -285,7 +251,7 @@ class _TabViewHomeState extends State<TabViewHome>
                 height: 90,
                 margin: const EdgeInsets.only(right: 0, left: 20),
                 padding: const EdgeInsets.only(left: 15),
-                width: MediaQuery.of(context).size.width - 80,
+                width: MediaQuery.of(context).size.width * 0.8,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -302,7 +268,7 @@ class _TabViewHomeState extends State<TabViewHome>
                       children: [
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 4),
+                              horizontal: 15, vertical: 4),
                           decoration: AppConstant.blackBoxDecoration,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
@@ -402,7 +368,7 @@ class _TabViewHomeState extends State<TabViewHome>
                   children: [
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 6),
+                          horizontal: 20, vertical: 6),
                       decoration: AppConstant.blackBoxDecoration,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -433,5 +399,45 @@ class _TabViewHomeState extends State<TabViewHome>
             ),
           );
         });
+  }
+
+  _tabBar() {
+    return TabBar(
+      labelColor: Colors.black,
+      unselectedLabelColor: Colors.black,
+      labelStyle: AppConstant.tabSelectedFontStyle,
+      unselectedLabelStyle: AppConstant.tabUnselectedFontStyle,
+      overlayColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
+        if (states.contains(MaterialState.pressed)) {
+          return AppColors.primaryColor.withOpacity(0.5);
+        }
+        if (states.contains(MaterialState.focused)) {
+          return Colors.orange;
+        } else if (states.contains(MaterialState.hovered)) {
+          return Colors.pinkAccent;
+        }
+
+        return Colors.transparent;
+      }),
+      indicatorWeight: 2,
+      indicatorColor: AppColors.primaryColor,
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicatorPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      // indicator: BoxDecoration(
+      //   border: Border.all(color: Colors.red),
+      //   borderRadius: BorderRadius.circular(10),
+      //   color: Colors.pinkAccent,
+      // ),
+      isScrollable: false,
+      physics: const BouncingScrollPhysics(),
+      onTap: (int index) {
+        debugPrint('Tab $index is tapped');
+      },
+      enableFeedback: true,
+      // Uncomment the line below and remove DefaultTabController if you want to use a custom TabController
+      // controller: _tabController,
+      tabs: _tabs,
+    );
   }
 }

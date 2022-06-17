@@ -70,6 +70,6 @@ class AppConstant {
 
   static BoxDecoration blackBoxDecoration = const BoxDecoration(
       borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
+          topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
       color: Colors.black);
 }

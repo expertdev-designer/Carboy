@@ -84,7 +84,7 @@ class NavBarBody extends StatelessWidget {
                           widthFactor: t,
                           child: Padding(
                             padding: EdgeInsets.only(
-                                left: itemPadding.left-2 ,
+                                left: itemPadding.left - 2,
                                 right: itemPadding.right),
                             child: DefaultTextStyle(
                               style: TextStyle(

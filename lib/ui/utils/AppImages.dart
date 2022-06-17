@@ -8,6 +8,11 @@ class AppImages {
   static const homeBannerImage = "assets/images/home_banner_img.svg";
   static const whatsAppIcon = "assets/images/whatspp_icon.svg";
   static const callingIcon = "assets/images/calling_icon.svg";
-  static const insuranceBg= "assets/images/jeep_car_img.svg";
+  static const insuranceBg = "assets/images/jeep_car_img.svg";
   static const sellBg = "assets/images/car_img.svg";
+  static const selectedRadioButton =
+      "assets/images/selected_radio_button_con.svg";
+  static const unselectedRadioButton =
+      "assets/images/unselected_radion_icon.svg";
+  static const circleAddIcon = "assets/images/circle_add_icon.svg";
 }

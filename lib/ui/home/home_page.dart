@@ -13,12 +13,54 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   int current = 0;
   final CarouselController controller = CarouselController();
+  late TabController _tabController;
 
   @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 6, vsync: this);
+    _tabController.animateTo(2);
+  }
+
+  static const List<Tab> _tabs = [
+    Tab(child: Text('Hatchback')),
+    Tab(text: 'Sedan'),
+    Tab(text: 'SUV'),
+    Tab(text: 'Big SUV'),
+  ];
+  @override
   Widget build(BuildContext context) {
+   // return  DefaultTabController(
+   //   length: 4,
+   //   child: Scaffold(
+   //        body: CustomScrollView(
+   //          slivers: <Widget>[
+   //            SliverAppBar(
+   //              snap: false,
+   //              pinned: false,
+   //              floating: false,
+   //              flexibleSpace: FlexibleSpaceBar(
+   //                  background:  _topBanner(),//Images.network
+   //              ), //FlexibleSpaceBar
+   //              expandedHeight: MediaQuery.of(context).size.width * 0.48+90,
+   //              backgroundColor: Colors.white,
+   //              bottom:_tabBar() ,
+   //
+   //
+   //
+   //              //<Widget>[]
+   //            ),
+   //
+   //
+   //            //SliverAppBar
+   //           //SliverList
+   //          ], //<Widget>[]
+   //        ) //CustonScrollView
+   //    ),
+   // );
     return Container(
       color: Colors.white,
       child: Column(
@@ -27,6 +69,46 @@ class _HomePageState extends State<HomePage> {
           const Expanded(child: TabViewHome()),
         ],
       ),
+    );
+  }
+
+  _tabBar() {
+    return TabBar(
+      labelColor: Colors.black,
+      unselectedLabelColor: Colors.black,
+      labelStyle: AppConstant.tabSelectedFontStyle,
+      unselectedLabelStyle: AppConstant.tabUnselectedFontStyle,
+      overlayColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
+        if (states.contains(MaterialState.pressed)) {
+          return AppColors.primaryColor.withOpacity(0.5);
+        }
+        if (states.contains(MaterialState.focused)) {
+          return Colors.orange;
+        } else if (states.contains(MaterialState.hovered)) {
+          return Colors.pinkAccent;
+        }
+
+        return Colors.transparent;
+      }),
+      indicatorWeight: 2,
+      indicatorColor: AppColors.primaryColor,
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicatorPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      // indicator: BoxDecoration(
+      //   border: Border.all(color: Colors.red),
+      //   borderRadius: BorderRadius.circular(10),
+      //   color: Colors.pinkAccent,
+      // ),
+      isScrollable: false,
+      physics: const BouncingScrollPhysics(),
+      onTap: (int index) {
+        debugPrint('Tab $index is tapped');
+      },
+      enableFeedback: true,
+      // Uncomment the line below and remove DefaultTabController if you want to use a custom TabController
+      // controller: _tabController,
+      tabs: _tabs,
     );
   }
 
