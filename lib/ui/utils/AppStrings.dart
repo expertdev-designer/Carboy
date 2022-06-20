@@ -38,5 +38,20 @@ class AppStrings {
   static const addOns = "Add Ons";
   static const renewPlan = "Renew Plan";
   static const changePackage = "Change Package";
+  static const summary = "Summary";
+    static const selectTimeSlot = "Select Time Slot";
+  static const enterVehicleNo = "Enter Vehicle Number (eg. DL1CB 1844)";
+  static const selectManufacturer = "Select Manufacturer";
+  static const selectModel = "Select Model";
+  static const enterCouponCode = "Enter Coupon Code";
+  static const apply = "Apply";
+  static const rcUpload = "RC Upload";
+  static const payNow = "Pay Now";
+  static const noOfMonth = "No. of Months";
+  static const startFrom = "Start From";
+  static const packagePrice = "Package Price";
+  static const total = "Total";
+
+  static const nowYouCanAvailable = "Now you can avail a free subscription of 2 months simply by uploading your vehicle's RC.";
 // static const ourTailor = "Our tailor - made plans for you";
 }

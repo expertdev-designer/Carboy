@@ -143,8 +143,9 @@ class _MyPackagePageState extends State<MyPackagePage> {
                                 const SizedBox(width: 8),
                                 Text(i.toString(),
                                     style: AppConstant.labelFontStyle.copyWith(
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.w400,
                                         color: AppColors.textColorGray,
+                                        height: 1.3,
                                         fontSize: 13)),
                               ],
                             )

@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int current = 0;
   final CarouselController controller = CarouselController();
   late TabController _tabController;
@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
     _tabController.animateTo(2);
   }
 
@@ -31,43 +31,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     Tab(text: 'SUV'),
     Tab(text: 'Big SUV'),
   ];
+
   @override
   Widget build(BuildContext context) {
-   // return  DefaultTabController(
-   //   length: 4,
-   //   child: Scaffold(
-   //        body: CustomScrollView(
-   //          slivers: <Widget>[
-   //            SliverAppBar(
-   //              snap: false,
-   //              pinned: false,
-   //              floating: false,
-   //              flexibleSpace: FlexibleSpaceBar(
-   //                  background:  _topBanner(),//Images.network
-   //              ), //FlexibleSpaceBar
-   //              expandedHeight: MediaQuery.of(context).size.width * 0.48+90,
-   //              backgroundColor: Colors.white,
-   //              bottom:_tabBar() ,
-   //
-   //
-   //
-   //              //<Widget>[]
-   //            ),
-   //
-   //
-   //            //SliverAppBar
-   //           //SliverList
-   //          ], //<Widget>[]
-   //        ) //CustonScrollView
-   //    ),
-   // );
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: [
-          _topBanner(),
-          const Expanded(child: TabViewHome()),
-        ],
+    return Scaffold(
+      body: DefaultTabController(
+        length: 4,
+        child: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                  backgroundColor: Colors.white,
+                  expandedHeight: MediaQuery.of(context).size.width * 0.50,
+                  snap: true,
+                  pinned: false,
+                  floating: true,
+                  flexibleSpace: FlexibleSpaceBar(
+                    background: _topBanner(),
+                  )),
+              SliverPersistentHeader(
+                delegate: _SliverAppBarDelegate(_tabBar()),
+                pinned: true,
+              ),
+            ];
+          },
+          body: const TabViewHome(),
+        ),
       ),
     );
   }
@@ -76,6 +65,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     return TabBar(
       labelColor: Colors.black,
       unselectedLabelColor: Colors.black,
+      controller: _tabController,
       labelStyle: AppConstant.tabSelectedFontStyle,
       unselectedLabelStyle: AppConstant.tabUnselectedFontStyle,
       overlayColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
@@ -183,5 +173,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
         );
       }).toList(),
     );
+  }
+}
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate(this._tabBar);
+
+  final TabBar _tabBar;
+
+  @override
+  double get minExtent => _tabBar.preferredSize.height;
+
+  @override
+  double get maxExtent => _tabBar.preferredSize.height;
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 10),
+      color: Colors.white,
+      child: _tabBar,
+    );
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return false;
   }
 }

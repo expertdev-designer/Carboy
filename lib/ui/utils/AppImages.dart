@@ -15,4 +15,8 @@ class AppImages {
   static const unselectedRadioButton =
       "assets/images/unselected_radion_icon.svg";
   static const circleAddIcon = "assets/images/circle_add_icon.svg";
+    static const dropdownIcon = "assets/images/dropdown_icon.svg";
+    static const calenderIcon = "assets/images/calender_icon.svg";
+    static const deleteIcon = "assets/images/delete_icon.svg";
+    static const discountIcon = "assets/images/billing_discount_coupon_offer_tag_icon.svg";
 }

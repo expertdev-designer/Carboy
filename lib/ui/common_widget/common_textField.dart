@@ -62,16 +62,26 @@ class CommonTextField extends StatelessWidget {
         buildCounter: (BuildContext context,
                 {int? currentLength, int? maxLength, bool? isFocused}) =>
             null,
-        style: AppConstant.labelFontStyle,
+        style: AppConstant.labelFontStyle.copyWith(
+            fontSize: 15,
+            fontWeight: FontWeight.w400,
+            color: AppColors.colorBlack),
         decoration: InputDecoration(
-            hintText: labelText,
-            hintStyle: AppConstant.labelFontStyle
-                .copyWith(fontSize: 14, fontWeight: FontWeight.w500),
-            errorStyle: AppConstant.labelFontStyle
-                .copyWith(fontSize: 14, fontWeight: FontWeight.w500),
+            labelText: labelText,
+            hintStyle: AppConstant.labelFontStyle.copyWith(
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+                color: AppColors.grayColor),
+            errorStyle: AppConstant.labelFontStyle.copyWith(
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+                color: AppColors.grayColor),
             suffixIconConstraints:
-                const BoxConstraints(minHeight: 20, minWidth: 20),
-            suffixIcon: SvgPicture.asset(prefixIcon ?? ""),
+                const BoxConstraints(minHeight: 16, minWidth: 16),
+            suffixIcon: Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: SvgPicture.asset(prefixIcon ?? ""),
+            ),
             enabledBorder: borderStyle,
             disabledBorder: borderStyle,
             focusedBorder: borderStyle,

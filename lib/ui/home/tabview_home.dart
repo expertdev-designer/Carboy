@@ -1,4 +1,5 @@
 import 'package:carboy/ui/common_widget/InnerShadow.dart';
+import 'package:carboy/ui/summary/summary_page.dart';
 import 'package:carboy/ui/utils/AppColors.dart';
 import 'package:carboy/ui/utils/AppImages.dart';
 import 'package:carboy/ui/utils/Constants.dart';
@@ -20,40 +21,18 @@ class TabViewHome extends StatefulWidget {
 
 class _TabViewHomeState extends State<TabViewHome>
     with TickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 6, vsync: this);
-    _tabController.animateTo(2);
-  }
-
-  static const List<Tab> _tabs = [
-    Tab(child: Text('Hatchback')),
-    Tab(text: 'Sedan'),
-    Tab(text: 'SUV'),
-    Tab(text: 'Big SUV'),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        appBar: _tabBar(),
-        body: TabBarView(
-          physics: const NeverScrollableScrollPhysics(),
-          // Uncomment the line below and remove DefaultTabController if you want to use a custom TabController
-          // controller: _tabController,
-          children: [
-            tabView(),
-            tabView(),
-            tabView(),
-            tabView(),
-          ],
-        ),
-      ),
+    return TabBarView(
+      physics: const NeverScrollableScrollPhysics(),
+      // Uncomment the line below and remove DefaultTabController if you want to use a custom TabController
+      // controller: _tabController,
+      children: [
+        tabView(),
+        tabView(),
+        tabView(),
+        tabView(),
+      ],
     );
   }
 
@@ -103,7 +82,7 @@ class _TabViewHomeState extends State<TabViewHome>
     ];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 16),
       child: Container(
         height: 48,
         decoration: BoxDecoration(
@@ -321,123 +300,89 @@ class _TabViewHomeState extends State<TabViewHome>
           horizontal: 20,
         ),
         itemBuilder: (context, index) {
-          return Container(
-            decoration: AppConstant.boxDecoration,
-            margin: const EdgeInsets.only(bottom: 20),
-            padding: const EdgeInsets.only(left: 15, top: 15, bottom: 15),
-            width: MediaQuery.of(context).size.width,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      index == 1 ? "Silver Plan" : "Economic Plan",
-                      style: AppConstant.labelFontStyle.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.colorBlack,
-                          fontSize: 18),
-                    ),
-                    const SizedBox(height: 8),
-                    for (var i in text)
-                      Row(
-                        children: [
-                          Container(
-                            height: 4,
-                            width: 4,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.textColorGray),
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            i.toString(),
-                            style: AppConstant.labelFontStyle.copyWith(
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.textColorGray,
-                                fontSize: 13),
-                          ),
-                        ],
-                      )
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 6),
-                      decoration: AppConstant.blackBoxDecoration,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(index == 1 ? "₹ 400" : '₹ 100',
-                              style: AppConstant.labelFontStyle.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.colorWhite,
-                                  fontSize: 14)),
-                          Text('Per Month',
-                              style: AppConstant.labelFontStyle.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.colorWhite,
-                                  fontSize: 10)),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(index == 1 ? '₹ 500' : "200",
+          return InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  CupertinoPageRoute(builder: (context) => const SummaryPage()));
+            },
+            child: Container(
+              decoration: AppConstant.boxDecoration,
+              margin: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(left: 15, top: 15, bottom: 15),
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        index == 1 ? "Silver Plan" : "Economic Plan",
                         style: AppConstant.labelFontStyle.copyWith(
                             fontWeight: FontWeight.w500,
                             color: AppColors.colorBlack,
-                            fontSize: 14,
-                            decoration: TextDecoration.lineThrough)),
-                  ],
-                ),
-              ],
+                            fontSize: 18),
+                      ),
+                      const SizedBox(height: 8),
+                      for (var i in text)
+                        Row(
+                          children: [
+                            Container(
+                              height: 4,
+                              width: 4,
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColors.textColorGray),
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              i.toString(),
+                              style: AppConstant.labelFontStyle.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.textColorGray,
+                                  fontSize: 13),
+                            ),
+                          ],
+                        )
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 6),
+                        decoration: AppConstant.blackBoxDecoration,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(index == 1 ? "₹ 400" : '₹ 100',
+                                style: AppConstant.labelFontStyle.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.colorWhite,
+                                    fontSize: 14)),
+                            Text('Per Month',
+                                style: AppConstant.labelFontStyle.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.colorWhite,
+                                    fontSize: 10)),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(index == 1 ? '₹ 500' : "200",
+                          style: AppConstant.labelFontStyle.copyWith(
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.colorBlack,
+                              fontSize: 14,
+                              decoration: TextDecoration.lineThrough)),
+                    ],
+                  ),
+                ],
+              ),
             ),
           );
         });
-  }
-
-  _tabBar() {
-    return TabBar(
-      labelColor: Colors.black,
-      unselectedLabelColor: Colors.black,
-      labelStyle: AppConstant.tabSelectedFontStyle,
-      unselectedLabelStyle: AppConstant.tabUnselectedFontStyle,
-      overlayColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
-        if (states.contains(MaterialState.pressed)) {
-          return AppColors.primaryColor.withOpacity(0.5);
-        }
-        if (states.contains(MaterialState.focused)) {
-          return Colors.orange;
-        } else if (states.contains(MaterialState.hovered)) {
-          return Colors.pinkAccent;
-        }
-
-        return Colors.transparent;
-      }),
-      indicatorWeight: 2,
-      indicatorColor: AppColors.primaryColor,
-      indicatorSize: TabBarIndicatorSize.tab,
-      indicatorPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-      padding: const EdgeInsets.symmetric(horizontal: 5),
-      // indicator: BoxDecoration(
-      //   border: Border.all(color: Colors.red),
-      //   borderRadius: BorderRadius.circular(10),
-      //   color: Colors.pinkAccent,
-      // ),
-      isScrollable: false,
-      physics: const BouncingScrollPhysics(),
-      onTap: (int index) {
-        debugPrint('Tab $index is tapped');
-      },
-      enableFeedback: true,
-      // Uncomment the line below and remove DefaultTabController if you want to use a custom TabController
-      // controller: _tabController,
-      tabs: _tabs,
-    );
   }
 }
