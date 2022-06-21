@@ -28,6 +28,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSCameraUsageDescription</key>
+    	<string>Carboy need camera permission to upload user image.</string>
+    	<key>NSPhotoLibraryUsageDescription</key>
+    	<string>Carboy need gallery access to upload user image.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

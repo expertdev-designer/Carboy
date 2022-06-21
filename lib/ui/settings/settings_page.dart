@@ -1,6 +1,8 @@
 import 'package:carboy/ui/common_widget/CommonActionButton.dart';
+import 'package:carboy/ui/otp_verification/Otp_verification.dart';
 import 'package:carboy/ui/settings/my_package.dart';
-import 'package:carboy/ui/settings/my_profile.dart';
+import 'package:carboy/ui/settings/edit_profile.dart';
+import 'package:carboy/ui/settings/profile.dart';
 import 'package:carboy/ui/settings/tc_pp_page.dart';
 import 'package:carboy/ui/settings/transaction_history.dart';
 import 'package:carboy/ui/utils/AppColors.dart';
@@ -44,7 +46,7 @@ class _SettingPageState extends State<SettingPage> {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) => const MyProfiePage()));
+                          builder: (context) => const ProfilePage()));
                   break;
                 case 1:
                   Navigator.push(
@@ -95,7 +97,13 @@ class _SettingPageState extends State<SettingPage> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
       child: CommonActionButtonWidget(
-          text: AppStrings.login.toUpperCase(), onPressed: () {}),
+          text: AppStrings.login.toUpperCase(),
+          onPressed: () {
+            Navigator.push(
+                context,
+                CupertinoPageRoute(
+                    builder: (context) => const OTPVerification()));
+          }),
     );
   }
 }

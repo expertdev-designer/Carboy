@@ -15,8 +15,15 @@ class AppImages {
   static const unselectedRadioButton =
       "assets/images/unselected_radion_icon.svg";
   static const circleAddIcon = "assets/images/circle_add_icon.svg";
-    static const dropdownIcon = "assets/images/dropdown_icon.svg";
-    static const calenderIcon = "assets/images/calender_icon.svg";
-    static const deleteIcon = "assets/images/delete_icon.svg";
-    static const discountIcon = "assets/images/billing_discount_coupon_offer_tag_icon.svg";
+  static const dropdownIcon = "assets/images/dropdown_icon.svg";
+  static const calenderIcon = "assets/images/calender_icon.svg";
+  static const deleteIcon = "assets/images/delete_icon.svg";
+  static const subscription = "assets/images/subscription.svg";
+  static const userImage = "assets/images/user_image.svg";
+  static const edit = "assets/images/edit.svg";
+  static const profileEdit = "assets/images/profile_edit.svg";
+  static const phoneIcon = "assets/images/phoneicon.svg";
+  static const profileBg = "assets/images/profilr_background.png";
+  static const discountIcon =
+      "assets/images/discount.svg";
 }

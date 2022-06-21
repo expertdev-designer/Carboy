@@ -398,6 +398,7 @@ class _SummaryPageState extends State<SummaryPage> {
           ]),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding:
@@ -463,8 +464,9 @@ class _SummaryPageState extends State<SummaryPage> {
             ),
           ),
           const Divider(),
+          const SizedBox(height: 2),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(width: 10),
               SvgPicture.asset(AppImages.discountIcon),
@@ -489,19 +491,25 @@ class _SummaryPageState extends State<SummaryPage> {
               const SizedBox(width: 10),
             ],
           ),
+          const SizedBox(height: 10),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SvgPicture.asset(AppImages.unselectedRadioButton),
+              const SizedBox(width: 12),
+              SvgPicture.asset(AppImages.subscription,
+                  color: AppColors.colorGreen),
+              const SizedBox(width: 10),
               Text('2 months of free subscription applied',
                   style: AppConstant.labelFontStyle.copyWith(
                       fontWeight: FontWeight.w700,
                       color: AppColors.colorGreen,
                       fontStyle: FontStyle.italic,
                       fontSize: 14)),
+              const SizedBox(width: 10),
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10,top:10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

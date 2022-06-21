@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
-    _tabController.animateTo(2);
+    _tabController.animateTo(0);
   }
 
   static const List<Tab> _tabs = [
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ];
           },
-          body: const TabViewHome(),
+          body:  TabViewHome(tabController: _tabController),
         ),
       ),
     );

@@ -18,6 +18,8 @@ dependencies:
   flutter_svg:
   dot_navigation_bar: ^1.0.1+4
   carousel_slider:
+  image_picker:
+  image_cropper:
 
 dev_dependencies:
   flutter_test:

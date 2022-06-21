@@ -16,7 +16,9 @@ class AppColors
   static const textColorGray=Color(0xFF626262);
   static const colorRewWithOpacity=Color(0xFFD96A60);
   static const grayColor=Color(0xFF6C6C6C);
+  static const profileLabelColor=Color(0xFF4C4C4C);
   static const rcUploadTextColor=Color(0xFF939393);
   static const greenColorWithOpacity=Color.fromRGBO(19,192,47,0.38);
+
   // static const pinBorderColor=Color(0xFF979797);
 }

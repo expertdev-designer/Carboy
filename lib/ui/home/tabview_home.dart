@@ -11,7 +11,9 @@ import '../make_own_plan/make_own_plan.dart';
 import '../utils/AppStrings.dart';
 
 class TabViewHome extends StatefulWidget {
-  const TabViewHome({Key? key}) : super(key: key);
+   TabViewHome({Key? key,this.tabController}) : super(key: key);
+  TabController? tabController;
+
 
   @override
   State<StatefulWidget> createState() {
@@ -24,6 +26,7 @@ class _TabViewHomeState extends State<TabViewHome>
   @override
   Widget build(BuildContext context) {
     return TabBarView(
+      controller: widget.tabController,
       physics: const NeverScrollableScrollPhysics(),
       // Uncomment the line below and remove DefaultTabController if you want to use a custom TabController
       // controller: _tabController,
@@ -67,7 +70,8 @@ class _TabViewHomeState extends State<TabViewHome>
                   fontSize: 18),
             ),
           ),
-          ourTailorListView()
+          ourTailorListView(),
+          const SizedBox(height: 80)
         ],
       ),
     );

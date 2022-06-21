@@ -40,7 +40,14 @@ class _OTPVerificationState extends State<OTPVerification> {
           leading: IconButton(
               padding: const EdgeInsets.only(left: 8),
               icon: SvgPicture.asset(AppImages.backArrow),
-              onPressed: () {}),
+              onPressed: () {
+                if (state == OTPVerificationWidgetState.mobileNumber) {
+                  Navigator.pop(context);
+                } else {
+                  state = OTPVerificationWidgetState.mobileNumber;
+                  setState(() {});
+                }
+              }),
           elevation: 0,
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false),
@@ -165,8 +172,9 @@ class _OTPVerificationState extends State<OTPVerification> {
               // errorText: _errorBank,
               // errorStyle: TextStyle(
               //     color: Colors.redAccent, fontSize: 16.0),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(4.0))),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(4.0),
+                  borderSide: const BorderSide(width: 0.7))),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               style: AppConstant.labelFontStyle

@@ -41,7 +41,7 @@ class CommonTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OutlineInputBorder borderStyle = OutlineInputBorder(
-      borderSide: const BorderSide(color: AppColors.pinBorderColor, width: 1),
+      borderSide: const BorderSide(color: AppColors.pinBorderColor, width: 0.8),
       borderRadius: BorderRadius.circular(4),
     );
     return TextFormField(
@@ -67,7 +67,7 @@ class CommonTextField extends StatelessWidget {
             fontWeight: FontWeight.w400,
             color: AppColors.colorBlack),
         decoration: InputDecoration(
-            labelText: labelText,
+            hintText: labelText,
             hintStyle: AppConstant.labelFontStyle.copyWith(
                 fontSize: 15,
                 fontWeight: FontWeight.w400,

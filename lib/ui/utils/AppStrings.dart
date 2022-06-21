@@ -27,6 +27,7 @@ class AppStrings {
       "BE INSURED  & SECURED   GET YOUR INSURANCE TODAY!";
   static const enquiry = "ENQUIRY";
   static const profile = "Profile";
+  static const editProfile = "Edit Profile";
   static const myPackages = "My Packages";
   static const transactionHistory = "Transaction History";
   static const tc = "Terms and Conditions";
@@ -51,6 +52,12 @@ class AppStrings {
   static const startFrom = "Start From";
   static const packagePrice = "Package Price";
   static const total = "Total";
+  static const save = "Save";
+  static const name = "Name";
+  static const society = "Society";
+  static const address = "Address";
+  static const email = "Email";
+  static const vehicleNo = "Vehicle No";
 
   static const nowYouCanAvailable = "Now you can avail a free subscription of 2 months simply by uploading your vehicle's RC.";
 // static const ourTailor = "Our tailor - made plans for you";
