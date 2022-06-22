@@ -11,9 +11,8 @@ import '../make_own_plan/make_own_plan.dart';
 import '../utils/AppStrings.dart';
 
 class TabViewHome extends StatefulWidget {
-   TabViewHome({Key? key,this.tabController}) : super(key: key);
+  TabViewHome({Key? key, this.tabController}) : super(key: key);
   TabController? tabController;
-
 
   @override
   State<StatefulWidget> createState() {
@@ -132,10 +131,7 @@ class _TabViewHomeState extends State<TabViewHome>
                       value: valueItem,
                       child: Row(
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const SizedBox(width: 15),
-                          Text(valueItem),
-                        ],
+                        children: [const SizedBox(width: 15), Text(valueItem)],
                       ),
                     );
                   }).toList(),
@@ -162,13 +158,11 @@ class _TabViewHomeState extends State<TabViewHome>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    AppStrings.makeYourOwnPlan,
-                    style: AppConstant.labelFontStyle.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.colorBlack,
-                        fontSize: 18),
-                  ),
+                  Text(AppStrings.makeYourOwnPlan,
+                      style: AppConstant.labelFontStyle.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.colorBlack,
+                          fontSize: 18)),
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -177,21 +171,18 @@ class _TabViewHomeState extends State<TabViewHome>
                               builder: (context) => const MakeYourOwnPlan()));
                     },
                     child: Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 6),
-                      decoration: AppConstant.boxDecoration.copyWith(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: AppColors.primaryColor)),
-                      child: Text(
-                        AppStrings.letsGetStarted,
-                        style: AppConstant.labelFontStyle.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.colorWhite,
-                            fontSize: 13),
-                      ),
-                    ),
+                        margin: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 6),
+                        decoration: AppConstant.boxDecoration.copyWith(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(4),
+                            border: Border.all(color: AppColors.primaryColor)),
+                        child: Text(AppStrings.letsGetStarted,
+                            style: AppConstant.labelFontStyle.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.colorWhite,
+                                fontSize: 13))),
                   ),
                 ],
               )),
@@ -199,21 +190,19 @@ class _TabViewHomeState extends State<TabViewHome>
         Column(
           children: [
             Container(
-              height: 45,
-              width: 45,
-              padding: const EdgeInsets.all(4),
-              decoration: AppConstant.boxDecoration,
-              child: SvgPicture.asset(AppImages.whatsAppIcon),
-            ),
+                height: 45,
+                width: 45,
+                padding: const EdgeInsets.all(4),
+                decoration: AppConstant.boxDecoration,
+                child: SvgPicture.asset(AppImages.whatsAppIcon)),
             const SizedBox(height: 10),
             Container(
-              height: 45,
-              width: 45,
-              padding: const EdgeInsets.all(4),
-              decoration: AppConstant.boxDecoration
-                  .copyWith(border: Border.all(color: Color(0xFF7DAFFF))),
-              child: SvgPicture.asset(AppImages.callingIcon),
-            )
+                height: 45,
+                width: 45,
+                padding: const EdgeInsets.all(4),
+                decoration: AppConstant.boxDecoration.copyWith(
+                    border: Border.all(color: const Color(0xFF7DAFFF))),
+                child: SvgPicture.asset(AppImages.callingIcon))
           ],
         )
       ],
@@ -238,13 +227,11 @@ class _TabViewHomeState extends State<TabViewHome>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      AppStrings.carWash,
-                      style: AppConstant.labelFontStyle.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.colorBlack,
-                          fontSize: 18),
-                    ),
+                    Text(AppStrings.carWash,
+                        style: AppConstant.labelFontStyle.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.colorBlack,
+                            fontSize: 18)),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -263,25 +250,21 @@ class _TabViewHomeState extends State<TabViewHome>
                                     color: AppColors.colorWhite,
                                     fontSize: 14),
                               ),
-                              Text(
-                                'Per Month',
-                                style: AppConstant.labelFontStyle.copyWith(
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.colorWhite,
-                                    fontSize: 10),
-                              ),
+                              Text('Per Month',
+                                  style: AppConstant.labelFontStyle.copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.colorWhite,
+                                      fontSize: 10)),
                             ],
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Text(
-                          '₹ 50',
-                          style: AppConstant.labelFontStyle.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.colorBlack,
-                              fontSize: 14,
-                              decoration: TextDecoration.lineThrough),
-                        ),
+                        Text('₹ 50',
+                            style: AppConstant.labelFontStyle.copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.colorBlack,
+                                fontSize: 14,
+                                decoration: TextDecoration.lineThrough)),
                       ],
                     ),
                   ],
@@ -306,8 +289,10 @@ class _TabViewHomeState extends State<TabViewHome>
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => const SummaryPage()));
+              Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                      builder: (context) => const SummaryPage()));
             },
             child: Container(
               decoration: AppConstant.boxDecoration,
@@ -332,20 +317,17 @@ class _TabViewHomeState extends State<TabViewHome>
                         Row(
                           children: [
                             Container(
-                              height: 4,
-                              width: 4,
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: AppColors.textColorGray),
-                            ),
+                                height: 4,
+                                width: 4,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.textColorGray)),
                             const SizedBox(width: 8),
-                            Text(
-                              i.toString(),
-                              style: AppConstant.labelFontStyle.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.textColorGray,
-                                  fontSize: 13),
-                            ),
+                            Text(i.toString(),
+                                style: AppConstant.labelFontStyle.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.textColorGray,
+                                    fontSize: 13)),
                           ],
                         )
                     ],
@@ -355,32 +337,31 @@ class _TabViewHomeState extends State<TabViewHome>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 6),
-                        decoration: AppConstant.blackBoxDecoration,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(index == 1 ? "₹ 400" : '₹ 100',
-                                style: AppConstant.labelFontStyle.copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.colorWhite,
-                                    fontSize: 14)),
-                            Text('Per Month',
-                                style: AppConstant.labelFontStyle.copyWith(
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.colorWhite,
-                                    fontSize: 10)),
-                          ],
-                        ),
-                      ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 6),
+                          decoration: AppConstant.blackBoxDecoration,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(index == 1 ? "₹ 400" : '₹ 100',
+                                  style: AppConstant.labelFontStyle.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.colorWhite,
+                                      fontSize: 14)),
+                              Text('Per Month',
+                                  style: AppConstant.labelFontStyle.copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.colorWhite,
+                                      fontSize: 10))
+                            ],
+                          )),
                       const SizedBox(height: 10),
                       Text(index == 1 ? '₹ 500' : "200",
                           style: AppConstant.labelFontStyle.copyWith(
                               fontWeight: FontWeight.w500,
                               color: AppColors.colorBlack,
                               fontSize: 14,
-                              decoration: TextDecoration.lineThrough)),
+                              decoration: TextDecoration.lineThrough))
                     ],
                   ),
                 ],

@@ -258,30 +258,50 @@ class _SummaryPageState extends State<SummaryPage> {
   }
 
   Widget enterCouponCode() {
-    return CommonTextField(
-      labelText: AppStrings.enterCouponCode,
-      onTap: () {},
+    return Stack(
+      children: [
+        CommonTextField(
+          labelText: AppStrings.enterCouponCode,
+          onTap: () {},
+        ),
+        Positioned(
+          right: 15,
+          top: 14,
+          child: InkWell(
+              onTap: () {},
+              child: Text("Apply",
+                  style: AppConstant.labelFontStyle.copyWith(
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.colorGreen,
+                      fontSize: 14))),
+        ),
+      ],
     );
   }
 
   _rcUpload() {
-    return Container(
-        decoration: AppConstant.boxDecoration.copyWith(
-            borderRadius: BorderRadius.circular(2),
-            border: Border.all(
-              color: AppColors.pinBorderColor,
-            ),
-            boxShadow: [
-              const BoxShadow(
-                  color: Color(0xFFFFFFFF), offset: Offset(0, 2), blurRadius: 3)
-            ]),
-        height: 100,
-        width: 100,
-        child: const Icon(
-          Icons.add,
-          size: 30,
-          color: AppColors.colorGreen,
-        ));
+    return InkWell(
+      onTap: () => showRCUploadDialog(context),
+      child: Container(
+          decoration: AppConstant.boxDecoration.copyWith(
+              borderRadius: BorderRadius.circular(2),
+              border: Border.all(
+                color: AppColors.pinBorderColor,
+              ),
+              boxShadow: [
+                const BoxShadow(
+                    color: Color(0xFFFFFFFF),
+                    offset: Offset(0, 2),
+                    blurRadius: 3)
+              ]),
+          height: 100,
+          width: 100,
+          child: const Icon(
+            Icons.add,
+            size: 30,
+            color: AppColors.colorGreen,
+          )),
+    );
   }
 
   addOnsListView() {
@@ -509,7 +529,8 @@ class _SummaryPageState extends State<SummaryPage> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10,top:10),
+            padding:
+                const EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -541,6 +562,59 @@ class _SummaryPageState extends State<SummaryPage> {
           ),
         ],
       ),
+    );
+  }
+
+  void showRCUploadDialog(BuildContext context) {
+    showGeneralDialog(
+      context: context,
+      barrierLabel: "RC Upload",
+      barrierDismissible: true,
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionDuration: const Duration(milliseconds: 500),
+      pageBuilder: (_, __, ___) {
+        return Builder(
+          builder: (context) {
+            return Center(
+              child: Wrap(
+                children: [
+                  Material(
+                    color: Colors.transparent,
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 40),
+                      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
+                      decoration: BoxDecoration(
+                          color: Colors.white, borderRadius: BorderRadius.circular(12)),
+                      child: Column(
+                        children: [
+                          Text(
+                              'You are no longer eligible for  2 months of free subscription via  RC Upload offer.',
+                              textAlign: TextAlign.center,
+                              style: AppConstant.labelFontStyle.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.colorBlack,
+                                  fontSize: 16)),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 15),
+                            child: CommonActionButtonWidget(
+                                text: "Continue",
+                                height: 48,
+                                radius: 4,
+                                buttonColor: const Color(0xff2E9F00),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                }),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+        );
+      },
     );
   }
 }

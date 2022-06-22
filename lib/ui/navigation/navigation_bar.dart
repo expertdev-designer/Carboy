@@ -18,7 +18,7 @@ class CarBoyNavigationBar extends StatefulWidget {
   State<CarBoyNavigationBar> createState() => _CarBoyNavigationBarState();
 }
 
-enum _SelectedTab { home, favorite, search, person }
+enum _SelectedTab { home, sell, insurance, profile}
 
 class _CarBoyNavigationBarState extends State<CarBoyNavigationBar> {
   var _selectedTab = _SelectedTab.home;
@@ -35,21 +35,20 @@ class _CarBoyNavigationBarState extends State<CarBoyNavigationBar> {
       extendBody: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        title: Text(
-          _selectedTab.index == 0
-              ? "Home"
-              : _selectedTab.index == 1
-                  ? "Sell"
-                  : _selectedTab.index == 2
-                      ? "Insurance"
-                      : "Settings",
-          style: AppConstant.appBarFontStyleBold,
-        ),
-      ),
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          title: Text(
+            _selectedTab.index == 0
+                ? "Home"
+                : _selectedTab.index == 1
+                    ? "Sell"
+                    : _selectedTab.index == 2
+                        ? "Insurance"
+                        : "Settings",
+            style: AppConstant.appBarFontStyleBold,
+          )),
       body: IndexedStack(index: _selectedTab.index, children: const [
         HomePage(),
         SellPage(),
@@ -74,22 +73,26 @@ class _CarBoyNavigationBarState extends State<CarBoyNavigationBar> {
         items: [
           /// Home
           DotNavigationBarItem(
-              icon: SvgPicture.asset(AppImages.homeTabIcon,height: 22,width: 24)),
+              icon: SvgPicture.asset(AppImages.homeTabIcon,
+                  height: 22, width: 24)),
 
           /// Sell
           DotNavigationBarItem(
-              icon: SvgPicture.asset(AppImages.sellTabIcon,height: 22,width: 26)),
+              icon: SvgPicture.asset(AppImages.sellTabIcon,
+                  height: 22, width: 26)),
 
           /// Insurance
           DotNavigationBarItem(
-              icon: SvgPicture.asset(AppImages.insuranceTabIcon,height: 22,width: 26)),
+              icon: SvgPicture.asset(AppImages.insuranceTabIcon,
+                  height: 22, width: 26)),
 
           /// Setting
           DotNavigationBarItem(
               icon: Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: SvgPicture.asset(AppImages.settingTabIcon,height: 26,width: 26),
-              )),
+            padding: const EdgeInsets.only(bottom: 8),
+            child: SvgPicture.asset(AppImages.settingTabIcon,
+                height: 26, width: 26),
+          )),
         ],
       ),
     );

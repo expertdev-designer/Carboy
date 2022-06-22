@@ -5,7 +5,6 @@ import 'package:carboy/ui/utils/Constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -23,6 +22,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
     _tabController.animateTo(0);
+
   }
 
   static const List<Tab> _tabs = [
@@ -31,6 +31,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     Tab(text: 'SUV'),
     Tab(text: 'Big SUV'),
   ];
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +60,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ];
           },
-          body:  TabViewHome(tabController: _tabController),
+          body: TabViewHome(tabController: _tabController),
         ),
       ),
     );
